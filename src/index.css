@@ -3,10 +3,11 @@
   line-height: 1.5;
   font-weight: 400;
 
-  width: 100%;
-  height: 100%;
+  /* Usando viewport units para tornar responsivo */
+  width: 100vw;
+  height: 100vh;
 
-  font-size: 60px;
+  font-size: 5vw; /* Tamanho da fonte relativo ao tamanho da tela */
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -19,8 +20,9 @@
 }
 
 html, body {
-  height: 750px;
-  width: 1334px;
+  height: 100vh; /* Ajusta para ocupar toda a altura da viewport */
+  width: 100vw; /* Ajusta para ocupar toda a largura da viewport */
+  margin: 0; /* Remove as margens padrão */
 }
 
 div.my-love__container {
@@ -33,11 +35,25 @@ div.my-love__container {
 
 div.my-love__container-buttons {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 5vw; /* Gap responsivo com base na largura da tela */
 }
 
 div.my-love__container-buttons button {
-  width: 400px;
-  height: 100px;
-  font-size: 100%;
+  width: 80vw; /* Ajusta o tamanho dos botões para serem responsivos */
+  height: 15vh;
+  font-size: 3vw; /* Tamanho da fonte do botão também responsivo */
+}
+
+/* Media query específica para telas pequenas, como o iPhone SE */
+@media (max-width: 375px) {
+  :root {
+    font-size: 4.5vw; /* Ajuste o tamanho da fonte para telas menores */
+  }
+
+  div.my-love__container-buttons button {
+    width: 90vw; /* Aumenta a largura dos botões em telas menores */
+    height: 12vh;
+    font-size: 4vw;
+  }
 }
