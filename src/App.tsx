@@ -4,6 +4,8 @@ import './App.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Image from './assets/Sem título.png'
+
 import Confetti from 'react-confetti';
 
 function App() {
@@ -16,22 +18,31 @@ function App() {
   const handleYesClick = () => {
     toast.success('Te amo!');
     setIsCelebrating(true);
-    setTimeout(() => setIsCelebrating(false), 3000);
   }
 
   return (
-    <>
-        <div className='my-love__container'>
-            <div className='my-love__container-text'>
-                <h1>Você é a melhor coisa que me aconteceu</h1>
-                <p>Casa comigo?</p>
-            </div>
+    <>  
+        {
+          !isCelebrating && (
+            <div className='my-love__container'>
+                <div className='my-love__container-text'>
+                    <h1>Você é a melhor coisa que me aconteceu</h1>
+                    <p>Casa comigo?</p>
+                </div>
 
-            <div className='my-love__container-buttons'>
-              <button onClick={handleYesClick}>Sim</button>
-              <button onClick={handleClickNo}>Não</button>
+                <div className='my-love__container-buttons'>
+                  <button onClick={handleYesClick}>Sim</button>
+                  <button onClick={handleClickNo}>Não</button>
+                </div>
             </div>
-        </div>
+          ) 
+        }
+
+        {
+          isCelebrating && (
+            <img src={Image} alt="" style={{width: '80vw', height: '80vh'}} />
+          )
+        }
 
         {
           isCelebrating && (
